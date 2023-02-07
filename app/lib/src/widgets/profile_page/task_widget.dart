@@ -1,5 +1,9 @@
 import 'package:app/src/controller/home_controller.dart';
+import 'package:app/src/mock/task_mock.dart';
+
 import 'package:flutter/material.dart';
+
+import '../../models/task_model.dart';
 
 class ShowEditTaskWidget extends StatefulWidget {
   const ShowEditTaskWidget({
@@ -11,21 +15,18 @@ class ShowEditTaskWidget extends StatefulWidget {
 }
 
 class _ShowEditTaskWidgetState extends State<ShowEditTaskWidget> {
-  final formKey = GlobalKey<FormState>();
-  TextEditingController titleTaskController = TextEditingController();
-  TextEditingController descriptionTaskController = TextEditingController();
+  final controller = HomeController();
   TimeOfDay timeOfDay = const TimeOfDay(hour: 25, minute: 59);
   DateTime dateTime = DateTime(2025);
 
   @override
   Widget build(BuildContext context) {
-    final controller = HomeController();
     final size = MediaQuery.of(context).size;
 
     return SizedBox(
       height: size.width * 0.9,
       child: Form(
-        key: formKey,
+        key: controller.formKey,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 36),
           child: Column(
@@ -49,7 +50,7 @@ class _ShowEditTaskWidgetState extends State<ShowEditTaskWidget> {
                     }
                     return null;
                   },
-                  controller: titleTaskController),
+                  controller: controller.titleTaskController),
               const SizedBox(height: 16),
               const Text('Descrição:'),
               const SizedBox(height: 8),
@@ -60,7 +61,7 @@ class _ShowEditTaskWidgetState extends State<ShowEditTaskWidget> {
                   }
                   return null;
                 },
-                controller: descriptionTaskController,
+                controller: controller.descriptionTaskController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(
                     borderSide: BorderSide(),
@@ -122,11 +123,10 @@ class _ShowEditTaskWidgetState extends State<ShowEditTaskWidget> {
               const SizedBox(height: 24),
               ElevatedButton(
                 onPressed: () {
-                  if (formKey.currentState!.validate()) {
-                    setState(() {
-                      Navigator.pop(context);
-                    });
-                  }
+                  setState(() {
+                    controller.saveTask();
+                  });
+                  Navigator.pop(context);
                 },
                 child: const Text('Salvar'),
               ),

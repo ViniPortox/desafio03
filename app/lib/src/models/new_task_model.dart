@@ -1,10 +1,10 @@
-class TaskModel {
+class NewTaskModel {
   late final String title;
   final String description;
   final bool isDone;
   final String? dateAndTime;
 
-  TaskModel({
+  NewTaskModel({
     required this.title,
     required this.description,
     required this.isDone,

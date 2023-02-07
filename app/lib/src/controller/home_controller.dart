@@ -1,35 +1,14 @@
+import 'package:app/src/mock/task_mock.dart';
 import 'package:app/src/models/task_model.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
-
 import '../models/chat_filter_model.dart';
 
 class HomeController {
-  String newTaskTitle = '';
-  String newTaskDescription = '';
-
-  List<TaskModel> taskList = [
-    TaskModel(
-      title: 'Review',
-      description: 'Review as 18 horas',
-      isDone: false,
-    ),
-    TaskModel(
-      title: 'Digite o titulo da tarefa',
-      description: 'Digite a descrição da tarefa',
-      isDone: false,
-    ),
-    TaskModel(
-      title: 'Digite o titulo da tarefa',
-      description: 'Digite a descrição da tarefa',
-      isDone: false,
-    ),
-    TaskModel(
-      title: 'Digite o titulo da tarefa',
-      description: 'Digite a descrição da tarefa',
-      isDone: false,
-    ),
-  ];
+  final formKey = GlobalKey<FormState>();
+  TextEditingController titleTaskController = TextEditingController();
+  TextEditingController descriptionTaskController = TextEditingController();
+  final taskmock = TaskMock();
 
   List<ChatFilterModel> chatFilter = [
     ChatFilterModel(
@@ -88,7 +67,17 @@ class HomeController {
 
   // }
 
-  String setNewTile(String title) {
-    return title = newTaskTitle;
+  void saveTask() {
+    taskmock.taskList.add(
+      TaskModel(
+        title: titleTaskController.text,
+        description: descriptionTaskController.text,
+        isDone: false,
+      ),
+    );
+  }
+
+  void listarTask() {
+    taskmock.taskList.clear();
   }
 }
