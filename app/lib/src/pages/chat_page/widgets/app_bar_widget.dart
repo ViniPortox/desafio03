@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
-import '../../../theme/extensions/colors_theme.dart';
-import '../../../theme/extensions/text_style_theme.dart';
+import '../../../../theme/extensions/colors_theme.dart';
+import '../../../../theme/extensions/text_style_theme.dart';
+import '../../home_page/widgets/name_widget.dart';
 
-import '../home_page/name_widget.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSize {
   final double size;
@@ -16,19 +16,19 @@ class AppBarWidget extends StatelessWidget implements PreferredSize {
     final textStyleTheme = Theme.of(context).extension<TextStyleTheme>()!;
     return AppBar(
       toolbarHeight: size.width * 0.266,
-      backgroundColor: colorsTheme.colorSelectedChild,
+      backgroundColor: colorsTheme.blackColor,
       elevation: 0,
       leading: Padding(
         padding: EdgeInsets.only(left: size.width * 0.042),
         child: const CircleAvatar(
           backgroundImage: NetworkImage(
-              'https://m.extra.globo.com/incoming/23560180-ee0-fc1/w480h720-PROP/81865188_re-rio-de-janeiro-rj-27-03-2019-nego-ney-o-menino-de-7-anos-que-tem-viralizado-por-seu.jpg'),
+              'https://m.extra.globo.com/incoming/23560180-ee0-fc1/w480h720-PROP/81865188_re-rio-de-janeiro-rj-27-03-2019-nego-ney-o-menino-de-7-anos-que-tem-viralizado-por-seu.jpg',),
         ),
       ),
       title: NameWidget(
           name: 'Nego Ney',
           isOnline: false,
-          textSize: textStyleTheme.mediumTextSize),
+          textSize: textStyleTheme.nameSmallStyle.fontSize,),
       actions: [
         Stack(
           alignment: Alignment.center,
@@ -39,7 +39,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSize {
                 horizontal: size.width * 0.042,
               ),
               decoration: BoxDecoration(
-                color: colorsTheme.colorSecundary,
+                color: colorsTheme.secundaryColor,
                 borderRadius: BorderRadius.circular(12),
               ),
               child: const Text('Agree to Offer'),

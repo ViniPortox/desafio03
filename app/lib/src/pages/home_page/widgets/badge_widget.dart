@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../theme/extensions/colors_theme.dart';
-import '../../../theme/extensions/text_style_theme.dart';
+
+import '../../../../theme/extensions/colors_theme.dart';
+import '../../../../theme/extensions/text_style_theme.dart';
+
 
 class BadgeWidget extends StatelessWidget {
   final bool isSelected;
@@ -22,17 +24,14 @@ class BadgeWidget extends StatelessWidget {
       height: size.width * 0.064,
       decoration: BoxDecoration(
         color: isSelected
-            ? colorsTheme.colorBadgeSelected
-            : colorsTheme.colorBadgeUnselected,
+            ? colorsTheme.badgeSelectedColor
+            : colorsTheme.badgeUnselectedColor,
         shape: BoxShape.circle,
       ),
       child: Center(
         child: Text(
           numberMessage,
-          style: TextStyle(
-            fontSize: textStyleTheme.smallTextSize,
-            color: colorsTheme.colorPrimary,
-          ),
+          style: textStyleTheme.badgeWidgetStyle,
         ),
       ),
     );

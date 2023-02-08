@@ -1,11 +1,10 @@
-import 'package:app/src/controller/home_controller.dart';
 import 'package:app/src/mock/task_mock.dart';
-import 'package:app/src/widgets/profile_page/profile_container_info_widget.dart';
-import 'package:app/src/widgets/profile_page/todo_widget.dart';
+import 'package:app/src/pages/info_page/widgets/profile_container_info_widget.dart';
+import 'package:app/src/pages/info_page/widgets/task_widget.dart';
+import 'package:app/src/pages/info_page/widgets/todo_widget.dart';
 import 'package:flutter/material.dart';
-
 import '../../../theme/extensions/colors_theme.dart';
-import '../../widgets/profile_page/task_widget.dart';
+
 
 class InfoPage extends StatefulWidget {
   const InfoPage({Key? key}) : super(key: key);
@@ -22,7 +21,7 @@ class _InfoPageState extends State<InfoPage> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        backgroundColor: colorsTheme.colorBackgroundSelected,
+        backgroundColor: colorsTheme.backgroundSelectedColor,
         onPressed: () {
           showModalBottomSheet(
             context: context,

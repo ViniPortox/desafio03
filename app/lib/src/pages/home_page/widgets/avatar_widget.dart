@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../routes/routes.dart';
+import '../../../../routes/routes.dart';
+
+
 
 class AvatarWidet extends StatelessWidget {
   final Widget? badge;
@@ -8,7 +10,7 @@ class AvatarWidet extends StatelessWidget {
   final String imageNetwork;
 
   const AvatarWidet(
-      {Key? key, required this.imageNetwork, this.badge, this.radius})
+      {Key? key, required this.imageNetwork, this.badge, this.radius,})
       : super(key: key);
 
   @override

@@ -1,24 +1,40 @@
 import 'package:flutter/material.dart';
 
 class TextStyleTheme extends ThemeExtension<TextStyleTheme> {
-  final TextStyle? text;
-  final double? badgeTextSize;
-  final double? smallTextSize;
-  final double? mediumTextSize;
-  final double? largeTextSize;
-  final double? ultraTextSize;
-  final FontWeight? fontWeightLargeTitle;
-  final FontWeight? fontWeightUltraTitle;
+  final TextStyle badgeWidgetStyle;
+  final TextStyle chatFilterButtonSelectedStyle;
+  final TextStyle chatFilterButtonStyle;
+  final TextStyle listTileNumberStyle;
+  final TextStyle listTileMessageStyle;
+  final TextStyle listTilehourStyle;
+  final TextStyle nameSmallStyle;
+
+  final TextStyle nameMediumStyle;
+
+  final TextStyle nameBigStyle;
+  final TextStyle searchStyle;
+  final TextStyle profileContainerInfoNumberStyle;
+  final TextStyle profileContainerInfoDescriptionStyle;
+  final TextStyle profileSkillStyle;
+  final TextStyle todoTitleStyle;
+  final TextStyle todoDescriptionStyle;
 
   TextStyleTheme({
-    this.text,
-    this.badgeTextSize,
-    this.smallTextSize,
-    this.mediumTextSize,
-    this.largeTextSize,
-    this.ultraTextSize,
-    this.fontWeightLargeTitle,
-    this.fontWeightUltraTitle,
+    required this.badgeWidgetStyle,
+    required this.chatFilterButtonSelectedStyle,
+    required this.chatFilterButtonStyle,
+    required this.listTileNumberStyle,
+    required this.listTileMessageStyle,
+    required this.listTilehourStyle,
+    required this.nameSmallStyle,
+    required this.nameMediumStyle,
+    required this.nameBigStyle,
+    required this.searchStyle,
+    required this.profileContainerInfoNumberStyle,
+    required this.profileContainerInfoDescriptionStyle,
+    required this.profileSkillStyle,
+    required this.todoTitleStyle,
+    required this.todoDescriptionStyle,
   });
 
   @override
@@ -28,7 +44,9 @@ class TextStyleTheme extends ThemeExtension<TextStyleTheme> {
 
   @override
   ThemeExtension<TextStyleTheme> lerp(
-      ThemeExtension<TextStyleTheme>? other, double t) {
+    ThemeExtension<TextStyleTheme>? other,
+    double t,
+  ) {
     throw UnimplementedError();
   }
 }

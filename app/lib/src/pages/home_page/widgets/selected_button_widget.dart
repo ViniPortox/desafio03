@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import '../../../theme/extensions/colors_theme.dart';
+
+import '../../../../theme/extensions/colors_theme.dart';
+
 
 class SelectedButtonWidget extends StatelessWidget {
   final double? padding;
   final double? width;
   final Widget child;
   const SelectedButtonWidget(
-      {Key? key, required this.child, this.width, this.padding})
+      {Key? key, required this.child, this.width, this.padding,})
       : super(key: key);
 
   @override
@@ -18,7 +20,7 @@ class SelectedButtonWidget extends StatelessWidget {
       width: width,
       padding: EdgeInsets.all(padding ?? size.width * 0.032),
       decoration: BoxDecoration(
-        color: colorsTheme.colorBackgroundSelected,
+        color: colorsTheme.backgroundSelectedColor,
         borderRadius: BorderRadius.circular(14),
       ),
       child: child,

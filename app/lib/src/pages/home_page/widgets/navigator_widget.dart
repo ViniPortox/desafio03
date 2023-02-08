@@ -1,7 +1,10 @@
-import 'package:app/src/widgets/home_page/selected_button_widget.dart';
+
+import 'package:app/src/pages/home_page/widgets/selected_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
-import '../../../theme/extensions/colors_theme.dart';
+
+import '../../../../theme/extensions/colors_theme.dart';
+
 
 class NavigatorWidget extends StatelessWidget {
   const NavigatorWidget({Key? key}) : super(key: key);
@@ -20,39 +23,38 @@ class NavigatorWidget extends StatelessWidget {
               topLeft: Radius.circular(36),
               topRight: Radius.circular(36),
             ),
-            color: colorsTheme.colorSecundary),
+            color: colorsTheme.secundaryColor,),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: size.width * 0.112),
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Icon(
                 LineIcons.file,
                 size: size.width * 0.069,
-                color: colorsTheme.colorPrimary,
+                color: colorsTheme.primaryColor,
               ),
               Icon(
                 Icons.account_box_outlined,
                 size: size.width * 0.069,
-                color: colorsTheme.colorPrimary,
+                color: colorsTheme.primaryColor,
               ),
               Icon(
                 Icons.analytics_outlined,
                 size: size.width * 0.069,
-                color: colorsTheme.colorPrimary,
+                color: colorsTheme.primaryColor,
               ),
               SelectedButtonWidget(
                 child: Icon(
                   LineIcons.comment,
                   size: size.width * 0.069,
-                  color: colorsTheme.colorSelectedChild,
+                  color: colorsTheme.blackColor,
                 ),
               ),
               Icon(
                 Icons.grid_view_outlined,
                 size: size.width * 0.069,
-                color: colorsTheme.colorPrimary,
+                color: colorsTheme.primaryColor,
               ),
             ],
           ),

@@ -1,41 +1,44 @@
 import 'package:flutter/material.dart';
 
 class ColorsTheme extends ThemeExtension<ColorsTheme> {
-  final Color? colorPrimary;
-  final Color? colorSecundary;
-  final Color? colorTerciary;
-  final Color? colorBackgroundInfo;
-  final Color? colorBackgroundSelected;
-  final Color? colorSelectedChild;
-  final Color? colorIcons;
-  final Color? colorIconsWhite;
-  final Color? colorBadgeSelected;
-  final Color? colorBadgeUnselected;
-  final Color? colorTitle;
-  final Color? colorOnline;
-   final Color? colorProfileSkilltext;
-  final Color? colorProfileIconsAvaliable;
-  final Color? colorProfileIconsUnvaliable;
-  final List<Color>? colorsSkill;
-
+  final Color backgroundColor;
+  final Color primaryColor;
+  final Color secundaryColor;
+  final Color terciaryColor;
+  final Color backgroundInfoColor;
+  final Color backgroundSelectedColor;
+  final Color blackColor;
+  final Color iconsColor;
+  final Color iconsWhiteColor;
+  final Color badgeSelectedColor;
+  final Color badgeUnselectedColor;
+  final Color titleColor;
+  final Color onlineColor;
+  final Color profileSkilltextColor;
+  final Color profileIconsAvaliableColor;
+  final Color profileIconsUnvaliableColor;
+  final List<Color> skillColor;
   ColorsTheme({
-    this.colorPrimary,
-    this.colorSecundary,
-    this.colorTerciary,
-    this.colorBackgroundInfo,
-    this.colorBackgroundSelected,
-    this.colorSelectedChild,
-    this.colorIconsWhite,
-    this.colorIcons,
-    this.colorBadgeSelected,
-    this.colorBadgeUnselected,
-    this.colorTitle,
-    this.colorOnline,
-    this.colorProfileSkilltext,
-    this.colorProfileIconsAvaliable,
-    this.colorProfileIconsUnvaliable,
-    this.colorsSkill,
+    required this.backgroundColor,
+    required this.primaryColor,
+    required this.secundaryColor,
+    required this.terciaryColor,
+    required this.backgroundInfoColor,
+    required this.backgroundSelectedColor,
+    required this.blackColor,
+    required this.iconsColor,
+    required this.iconsWhiteColor,
+    required this.badgeSelectedColor,
+    required this.badgeUnselectedColor,
+    required this.titleColor,
+    required this.onlineColor,
+    required this.profileSkilltextColor,
+    required this.profileIconsAvaliableColor,
+    required this.profileIconsUnvaliableColor,
+    required this.skillColor,
   });
+
+ 
 
   @override
   ThemeExtension<ColorsTheme> copyWith() {
@@ -44,7 +47,7 @@ class ColorsTheme extends ThemeExtension<ColorsTheme> {
 
   @override
   ThemeExtension<ColorsTheme> lerp(
-      ThemeExtension<ColorsTheme>? other, double t) {
+      ThemeExtension<ColorsTheme>? other, double t,) {
     throw UnimplementedError();
   }
 }

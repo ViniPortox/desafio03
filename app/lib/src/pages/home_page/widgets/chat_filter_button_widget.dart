@@ -1,9 +1,11 @@
-import 'package:app/src/widgets/home_page/selected_button_widget.dart';
+
+import 'package:app/src/pages/home_page/widgets/selected_button_widget.dart';
 import 'package:flutter/material.dart';
-import '../../controller/home_controller.dart';
-import '../../models/chat_filter_model.dart';
-import '../../../theme/extensions/colors_theme.dart';
-import '../../../theme/extensions/text_style_theme.dart';
+
+import '../../../../theme/extensions/colors_theme.dart';
+import '../../../../theme/extensions/text_style_theme.dart';
+import '../../../controller/home_controller.dart';
+import '../../../models/chat_filter_model.dart';
 import 'badge_widget.dart';
 
 class ChatFilterButtonWidget extends StatelessWidget {
@@ -16,7 +18,7 @@ class ChatFilterButtonWidget extends StatelessWidget {
       required this.filterIcon,
       required this.filterTypeTextChat,
       required this.numberMessage,
-      required this.isSelected})
+      required this.isSelected,})
       : super(key: key);
 
   @override
@@ -35,16 +37,13 @@ class ChatFilterButtonWidget extends StatelessWidget {
                 children: [
                   Icon(
                     controller.getIcon(filterIcon),
-                    color: colorsTheme.colorSelectedChild,
+                    color: colorsTheme.blackColor,
                     size: size.width * 0.069,
                   ),
                   SizedBox(width: size.width * 0.021),
                   Text(
                     filterTypeTextChat,
-                    style: TextStyle(
-                      fontSize: textStyleTheme.mediumTextSize,
-                      color: colorsTheme.colorSelectedChild,
-                    ),
+                    style: textStyleTheme.chatFilterButtonStyle,
                   ),
                   const SizedBox(width: 4),
                   BadgeWidget(
@@ -64,16 +63,13 @@ class ChatFilterButtonWidget extends StatelessWidget {
                 children: [
                   Icon(
                     controller.getIcon(filterIcon),
-                    color: colorsTheme.colorIcons,
+                    color: colorsTheme.iconsColor,
                     size: size.width * 0.069,
                   ),
                   SizedBox(width: size.width * 0.021),
                   Text(
                     filterTypeTextChat,
-                    style: TextStyle(
-                      fontSize: textStyleTheme.mediumTextSize,
-                      color: colorsTheme.colorPrimary,
-                    ),
+                    style: textStyleTheme.chatFilterButtonStyle,
                   ),
                   const SizedBox(width: 4),
                   BadgeWidget(

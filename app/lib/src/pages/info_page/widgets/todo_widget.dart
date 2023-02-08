@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../../theme/extensions/colors_theme.dart';
-import '../../../theme/extensions/text_style_theme.dart';
-import '../home_page/selected_button_widget.dart';
+import '../../../../theme/extensions/colors_theme.dart';
+import '../../../../theme/extensions/text_style_theme.dart';
+import '../../home_page/widgets/selected_button_widget.dart';
+
 
 class TodoWidget extends StatelessWidget {
   final String title;
@@ -30,27 +31,25 @@ class TodoWidget extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: isSelected
-              ? colorsTheme.colorSelectedChild
-              : colorsTheme.colorSecundary,
+              ? colorsTheme.blackColor
+              : colorsTheme.secundaryColor,
           borderRadius: BorderRadius.circular(18),
         ),
         child: Row(
           children: [
-            isSelected
-                ? SelectedButtonWidget(
+            if (isSelected) SelectedButtonWidget(
                     padding: size.width * 0.028,
                     child: Icon(
                       Icons.done,
-                      color: colorsTheme.colorSelectedChild,
+                      color: colorsTheme.blackColor,
                       size: size.width * 0.064,
                     ),
-                  )
-                : Container(
+                  ) else Container(
                     height: size.width * 0.122,
                     width: size.width * 0.122,
                     decoration: BoxDecoration(
                       border: Border.all(
-                        color: colorsTheme.colorBackgroundSelected!,
+                        color: colorsTheme.backgroundSelectedColor,
                       ),
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -62,16 +61,11 @@ class TodoWidget extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: TextStyle(
-                    fontSize: textStyleTheme.largeTextSize,
-                  ),
+                  style: textStyleTheme.todoTitleStyle,
                 ),
                 Text(
                   description,
-                  style: TextStyle(
-                    fontSize: textStyleTheme.mediumTextSize,
-                    color: colorsTheme.colorPrimary,
-                  ),
+                  style:textStyleTheme.todoDescriptionStyle,
                 ),
               ],
             )

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../../../theme/extensions/text_style_theme.dart';
 
-import '../../../theme/extensions/colors_theme.dart';
-import '../../../theme/extensions/text_style_theme.dart';
 
 class ProfileSkillsWidget extends StatelessWidget {
   final Color colors;
@@ -15,7 +14,6 @@ class ProfileSkillsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final colorsTheme = Theme.of(context).extension<ColorsTheme>()!;
     final textStyleTheme = Theme.of(context).extension<TextStyleTheme>()!;
     return Container(
       padding: EdgeInsets.symmetric(
@@ -29,10 +27,7 @@ class ProfileSkillsWidget extends StatelessWidget {
       child: Center(
         child: Text(
           text,
-          style: TextStyle(
-            color: colorsTheme.colorProfileSkilltext,
-            fontSize: textStyleTheme.mediumTextSize,
-          ),
+          style: textStyleTheme.profileSkillStyle,
         ),
       ),
     );

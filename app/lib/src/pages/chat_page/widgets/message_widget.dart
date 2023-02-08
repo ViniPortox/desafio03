@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../theme/extensions/colors_theme.dart';
+import '../../../../theme/extensions/colors_theme.dart';
 
 class MessageWidget extends StatelessWidget {
   final String message;
@@ -23,7 +23,7 @@ const  MessageWidget({
       ),
       decoration: BoxDecoration(
         color:
-            myMessage ? colorsTheme.colorTerciary : colorsTheme.colorSecundary,
+            myMessage ? colorsTheme.terciaryColor : colorsTheme.secundaryColor,
         borderRadius: myMessage
             ? const BorderRadius.only(
                 bottomLeft: Radius.circular(18),

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../theme/extensions/colors_theme.dart';
-import '../../../theme/extensions/text_style_theme.dart';
+import '../../../../theme/extensions/colors_theme.dart';
+import '../../../../theme/extensions/text_style_theme.dart';
+
 
 class NameWidget extends StatelessWidget {
   final double? textSize;
@@ -24,23 +25,21 @@ class NameWidget extends StatelessWidget {
         Text(
           name,
           style: TextStyle(
-            fontSize: textSize ?? textStyleTheme.largeTextSize,
+            fontSize: textSize ?? textStyleTheme.nameMediumStyle.fontSize,
           ),
         ),
         const SizedBox(width: 6),
-        isOnline
-            ? Padding(
+        if (isOnline) Padding(
                 padding: const EdgeInsets.only(top: 4),
                 child: Container(
                   width: size.width * 0.026,
                   height: size.width * 0.026,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: colorsTheme.colorOnline,
+                    color: colorsTheme.onlineColor,
                   ),
                 ),
-              )
-            : Container()
+              ) else Container()
       ],
     );
   }

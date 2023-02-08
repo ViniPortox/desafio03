@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../theme/extensions/colors_theme.dart';
-import '../../../theme/extensions/text_style_theme.dart';
+
+import '../../../../theme/extensions/colors_theme.dart';
+import '../../../../theme/extensions/text_style_theme.dart';
+
 
 class SearchWidget extends StatelessWidget {
   const SearchWidget({Key? key}) : super(key: key);
@@ -16,23 +18,20 @@ class SearchWidget extends StatelessWidget {
       height: size.width * 0.16,
       width: size.width * 0.906,
       decoration: BoxDecoration(
-        color: colorsTheme.colorSecundary,
+        color: colorsTheme.secundaryColor,
         borderRadius: BorderRadius.circular(18),
       ),
       child: Center(
         child: TextField(
           decoration: InputDecoration(
               hintText: 'Search',
-              hintStyle: TextStyle(
-                fontSize: textStyleTheme.largeTextSize,
-                color: colorsTheme.colorPrimary,
-              ),
+              hintStyle: textStyleTheme.searchStyle,
               prefixIcon: Icon(
-                color: colorsTheme.colorPrimary,
+                color: colorsTheme.primaryColor,
                 Icons.search,
                 size: size.width * 0.085,
               ),
-              border: InputBorder.none),
+              border: InputBorder.none,),
         ),
       ),
     );

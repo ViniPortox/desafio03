@@ -1,7 +1,8 @@
-import 'package:app/src/widgets/home_page/chat_filter_list_widget.dart';
-import 'package:app/src/widgets/home_page/list_tile_widget.dart';
-import 'package:app/src/widgets/home_page/navigator_widget.dart';
-import 'package:app/src/widgets/home_page/search_widget.dart';
+
+import 'package:app/src/pages/home_page/widgets/chat_filter_list_widget.dart';
+import 'package:app/src/pages/home_page/widgets/list_tile_widget.dart';
+import 'package:app/src/pages/home_page/widgets/navigator_widget.dart';
+import 'package:app/src/pages/home_page/widgets/search_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {

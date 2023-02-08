@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../../../theme/extensions/colors_theme.dart';
+import '../../../../theme/extensions/colors_theme.dart';
+
 
 class ProfileButtonWidget extends StatelessWidget {
   final bool avaliable;
   final IconData icon;
 
   const ProfileButtonWidget(
-      {Key? key, required this.icon, required this.avaliable})
+      {Key? key, required this.icon, required this.avaliable,})
       : super(key: key);
 
   @override
@@ -20,15 +21,15 @@ class ProfileButtonWidget extends StatelessWidget {
       width: size.width * 0.16,
       decoration: BoxDecoration(
         color: avaliable
-            ? colorsTheme.colorProfileIconsAvaliable
-            : colorsTheme.colorProfileIconsUnvaliable,
+            ? colorsTheme.profileIconsAvaliableColor
+            : colorsTheme.profileIconsUnvaliableColor,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Icon(icon,
           size: size.width * 0.096,
           color: avaliable
-              ? colorsTheme.colorIconsWhite
-              : colorsTheme.colorProfileSkilltext),
+              ? colorsTheme.iconsWhiteColor
+              : colorsTheme.profileSkilltextColor,),
     );
   }
 }

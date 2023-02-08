@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import '../../../../theme/extensions/colors_theme.dart';
+import '../../home_page/widgets/selected_button_widget.dart';
 
-import '../../../theme/extensions/colors_theme.dart';
-import '../home_page/selected_button_widget.dart';
 
 class SendMessageWidget extends StatelessWidget {
   const SendMessageWidget({Key? key}) : super(key: key);
@@ -16,7 +16,7 @@ class SendMessageWidget extends StatelessWidget {
       height: size.width * 0.16,
       width: size.width * 0.906,
       decoration: BoxDecoration(
-        color: colorsTheme.colorSecundary,
+        color: colorsTheme.secundaryColor,
         borderRadius: BorderRadius.circular(18),
       ),
       child: Row(
@@ -43,7 +43,7 @@ class SendMessageWidget extends StatelessWidget {
             child: Icon(
               Icons.send_rounded,
               size: size.width * 0.064,
-              color: colorsTheme.colorSelectedChild,
+              color: colorsTheme.blackColor,
             ),
           )
         ],

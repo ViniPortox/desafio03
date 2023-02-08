@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../controller/home_controller.dart';
-
+import '../../../controller/home_controller.dart';
 import 'chat_filter_button_widget.dart';
 
 class ChatFilterListWidget extends StatelessWidget {
@@ -27,7 +25,7 @@ class ChatFilterListWidget extends StatelessWidget {
               isSelected: filterList.isSelected,
               numberMessage: filterList.numberMessage,
             );
-          }))
+          }),)
         ],
       ),
     );
