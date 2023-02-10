@@ -1,7 +1,7 @@
 import '../models/task_model.dart';
 
 class TaskMock {
-  List<TaskModel> taskList = [
+ final List<TaskModel> taskList = [
     TaskModel(
       title: 'Review',
       description: 'Review as 18 horas',

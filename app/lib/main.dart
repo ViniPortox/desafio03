@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(
     MaterialApp(
-      
       initialRoute: Routes.home,
       routes: Pages.pages,
       debugShowCheckedModeBanner: false,

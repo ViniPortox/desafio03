@@ -1,16 +1,29 @@
-
 import 'package:app/src/pages/home_page/widgets/chat_filter_list_widget.dart';
+import 'package:app/src/pages/home_page/widgets/expansion_widget.dart';
 import 'package:app/src/pages/home_page/widgets/list_tile_widget.dart';
 import 'package:app/src/pages/home_page/widgets/navigator_widget.dart';
 import 'package:app/src/pages/home_page/widgets/search_widget.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+double altura = 350;
+double altura2 = 350;
+double altura3 = 350;
+bool isOpen = true;
+bool isOpen2 = false;
+bool isOpen3 = true;
+
+class _HomePageState extends State<HomePage> {
+  @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+
     return Scaffold(
       body: SizedBox(
         height: size.height,
@@ -29,15 +42,51 @@ class HomePage extends StatelessWidget {
                       child: const ChatFilterListWidget(),
                     ),
                     SizedBox(height: size.width * 0.053),
-                    const ListTileWidget(muted: false),
-                    SizedBox(height: size.width * 0.069),
-                    const ListTileWidget(muted: false),
-                    SizedBox(height: size.width * 0.069),
-                    const ListTileWidget(muted: true),
-                    SizedBox(height: size.width * 0.069),
-                    const ListTileWidget(muted: true),
-                    SizedBox(height: size.width * 0.069),
-                    const ListTileWidget(muted: false),
+                    ExpansionWidget(
+                      title: 'Unread',
+                      height: altura,
+                      isOpen: isOpen,
+                      onTap: () {
+                        setState(() {
+                          isOpen = !isOpen;
+                          isOpen == true
+                              ? altura = size.width * 0.693
+                              : altura = 0;
+                        });
+                      },
+                      child: const ListTileWidget(muted: false),
+                    ),
+                    SizedBox(height: size.width * 0.064),
+                    ExpansionWidget(
+                      title: 'From team',
+                      height: altura2,
+                      isOpen: isOpen2,
+                      onTap: () {
+                        setState(() {
+                          isOpen2 = !isOpen2;
+                          isOpen2 == true
+                              ? altura2 = size.width * 0.693
+                              : altura2 = 0;
+                        });
+                      },
+                      child: const ListTileWidget(muted: false),
+                    ),
+                    SizedBox(height: size.width * 0.064),
+                    ExpansionWidget(
+                      title: 'From companies',
+                      height: altura2,
+                      isOpen: isOpen3,
+                      onTap: () {
+                        setState(() {
+                          isOpen3 = !isOpen3;
+                          isOpen3 == true
+                              ? altura2 = size.width * 0.693
+                              : altura2 = 0;
+                        });
+                      },
+                      child: const ListTileWidget(muted: false),
+                    ),
+                    SizedBox(height: size.width * 0.064),
                   ],
                 ),
               ),

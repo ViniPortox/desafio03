@@ -1,10 +1,9 @@
-import 'package:app/src/mock/task_mock.dart';
+import 'package:app/src/controller/home_controller.dart';
 import 'package:app/src/pages/info_page/widgets/profile_container_info_widget.dart';
 import 'package:app/src/pages/info_page/widgets/task_widget.dart';
 import 'package:app/src/pages/info_page/widgets/todo_widget.dart';
 import 'package:flutter/material.dart';
 import '../../../theme/extensions/colors_theme.dart';
-
 
 class InfoPage extends StatefulWidget {
   const InfoPage({Key? key}) : super(key: key);
@@ -14,9 +13,10 @@ class InfoPage extends StatefulWidget {
 }
 
 class _InfoPageState extends State<InfoPage> {
+  final controller = HomeController();
+
   @override
   Widget build(BuildContext context) {
-    final taskMock = TaskMock();
     final colorsTheme = Theme.of(context).extension<ColorsTheme>()!;
     final size = MediaQuery.of(context).size;
     return Scaffold(
@@ -26,7 +26,9 @@ class _InfoPageState extends State<InfoPage> {
           showModalBottomSheet(
             context: context,
             builder: (context) {
-              return const ShowEditTaskWidget();
+              return ShowEditTaskWidget(
+                controller: controller,
+              );
             },
           );
         },
@@ -46,9 +48,9 @@ class _InfoPageState extends State<InfoPage> {
                 width: 450,
                 height: 400,
                 child: ListView.builder(
-                  itemCount: taskMock.taskList.length,
+                  itemCount: controller.taskMock.taskList.length,
                   itemBuilder: (BuildContext context, int index) {
-                    final taskList = taskMock.taskList[index];
+                    final taskList = controller.taskMock.taskList[index];
                     return TodoWidget(
                       isSelected: taskList.isDone,
                       title: taskList.title,

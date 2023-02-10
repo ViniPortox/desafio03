@@ -5,10 +5,21 @@ import 'package:line_icons/line_icons.dart';
 import '../models/chat_filter_model.dart';
 
 class HomeController {
+  final taskMock = TaskMock();
+
   final formKey = GlobalKey<FormState>();
   TextEditingController titleTaskController = TextEditingController();
   TextEditingController descriptionTaskController = TextEditingController();
-  final taskmock = TaskMock();
+  TimeOfDay timeOfDay = const TimeOfDay(hour: 25, minute: 59);
+  DateTime dateTime = DateTime(2025);
+
+  String formatedDate() {
+    return '${dateTime.day}/${dateTime.month}/${dateTime.year}';
+  }
+
+  String formatedTime() {
+    return '${timeOfDay.hour}:${timeOfDay.minute}';
+  }
 
   List<ChatFilterModel> chatFilter = [
     ChatFilterModel(
@@ -67,17 +78,20 @@ class HomeController {
 
   // }
 
+
   void saveTask() {
-    taskmock.taskList.add(
+    print(taskMock.taskList.length);
+    taskMock.taskList.add(
       TaskModel(
         title: titleTaskController.text,
         description: descriptionTaskController.text,
         isDone: false,
       ),
     );
+    print(taskMock.taskList.length);
   }
 
   void listarTask() {
-    taskmock.taskList.clear();
+    taskMock.taskList.clear();
   }
 }

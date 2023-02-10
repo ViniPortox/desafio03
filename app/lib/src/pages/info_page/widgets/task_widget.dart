@@ -1,10 +1,12 @@
 import 'package:app/src/controller/home_controller.dart';
 import 'package:flutter/material.dart';
 
-
 class ShowEditTaskWidget extends StatefulWidget {
+  final HomeController controller;
+
   const ShowEditTaskWidget({
     Key? key,
+    required this.controller,
   }) : super(key: key);
 
   @override
@@ -12,10 +14,6 @@ class ShowEditTaskWidget extends StatefulWidget {
 }
 
 class _ShowEditTaskWidgetState extends State<ShowEditTaskWidget> {
-  final controller = HomeController();
-  TimeOfDay timeOfDay = const TimeOfDay(hour: 25, minute: 59);
-  DateTime dateTime = DateTime(2025);
-
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -23,7 +21,7 @@ class _ShowEditTaskWidgetState extends State<ShowEditTaskWidget> {
     return SizedBox(
       height: size.width * 0.9,
       child: Form(
-        key: controller.formKey,
+        key: widget.controller.formKey,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 36),
           child: Column(
@@ -33,20 +31,21 @@ class _ShowEditTaskWidgetState extends State<ShowEditTaskWidget> {
               const Text('Titulo:'),
               const SizedBox(height: 8),
               TextFormField(
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(16),
-                      ),
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(16),
                     ),
                   ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Por favor insira um titulo válido';
-                    }
-                    return null;
-                  },
-                  controller: controller.titleTaskController,),
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Por favor insira um titulo válido';
+                  }
+                  return null;
+                },
+                controller: widget.controller.titleTaskController,
+              ),
               const SizedBox(height: 16),
               const Text('Descrição:'),
               const SizedBox(height: 8),
@@ -57,7 +56,7 @@ class _ShowEditTaskWidgetState extends State<ShowEditTaskWidget> {
                   }
                   return null;
                 },
-                controller: controller.descriptionTaskController,
+                controller: widget.controller.descriptionTaskController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(
@@ -79,7 +78,7 @@ class _ShowEditTaskWidgetState extends State<ShowEditTaskWidget> {
                       );
                       if (newDate != null) {
                         setState(() {
-                          dateTime = newDate;
+                          widget.controller.dateTime = newDate;
                         });
                       }
                     },
@@ -87,17 +86,17 @@ class _ShowEditTaskWidgetState extends State<ShowEditTaskWidget> {
                   ),
                   const SizedBox(width: 20),
                   ElevatedButton(
-                    onPressed: () async {
-                      final newTime = await showTimePicker(
-                        context: context,
-                        initialTime: TimeOfDay.now(),
-                      );
-                      if (newTime != null) {
-                        setState(() {
-                          timeOfDay = newTime;
-                        });
-                      }
-                    },
+                    onPressed:() async {
+                  final newTime = await showTimePicker(
+                    context: context,
+                    initialTime: TimeOfDay.now(),
+                  );
+                  if (newTime != null) {
+                    setState(() {
+                      widget.controller.timeOfDay = newTime;
+                    });
+                  }
+                },
                     child: const Text('escolha as horas'),
                   )
                 ],
@@ -106,20 +105,27 @@ class _ShowEditTaskWidgetState extends State<ShowEditTaskWidget> {
               Row(
                 children: [
                   Visibility(
-                      visible: controller.showInitialDate(dateTime),
-                      child: Text(
-                          '${dateTime.day}/${dateTime.month}/${dateTime.year}',),),
+                    visible: widget.controller
+                        .showInitialDate(widget.controller.dateTime),
+                    child: Text(
+                      widget.controller.formatedDate(),
+                    ),
+                  ),
                   const SizedBox(width: 12),
                   Visibility(
-                      visible: controller.showInitialTime(timeOfDay),
-                      child: Text('${timeOfDay.hour}:${timeOfDay.minute}'),),
+                    visible: widget.controller
+                        .showInitialTime(widget.controller.timeOfDay),
+                    child: Text(widget.controller.formatedTime()),
+                  ),
                 ],
               ),
               const SizedBox(height: 24),
               ElevatedButton(
                 onPressed: () {
-                  setState(controller.saveTask);
-                  Navigator.pop(context);
+                  setState(() {
+                    widget.controller.saveTask();
+                    Navigator.pop(context);
+                  });
                 },
                 child: const Text('Salvar'),
               ),
