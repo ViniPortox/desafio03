@@ -91,7 +91,5 @@ class HomeController {
     print(taskMock.taskList.length);
   }
 
-  void listarTask() {
-    taskMock.taskList.clear();
-  }
+
 }

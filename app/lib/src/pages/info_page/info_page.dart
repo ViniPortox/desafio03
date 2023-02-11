@@ -13,6 +13,7 @@ class InfoPage extends StatefulWidget {
 }
 
 class _InfoPageState extends State<InfoPage> {
+  
   final controller = HomeController();
 
   @override

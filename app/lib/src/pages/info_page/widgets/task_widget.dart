@@ -38,25 +38,25 @@ class _ShowEditTaskWidgetState extends State<ShowEditTaskWidget> {
                     ),
                   ),
                 ),
+                controller: widget.controller.titleTaskController,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Por favor insira um titulo válido';
                   }
                   return null;
                 },
-                controller: widget.controller.titleTaskController,
               ),
               const SizedBox(height: 16),
               const Text('Descrição:'),
               const SizedBox(height: 8),
               TextFormField(
+                controller: widget.controller.descriptionTaskController,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Por favor insira uma descrição válida';
                   }
                   return null;
                 },
-                controller: widget.controller.descriptionTaskController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(
@@ -86,17 +86,17 @@ class _ShowEditTaskWidgetState extends State<ShowEditTaskWidget> {
                   ),
                   const SizedBox(width: 20),
                   ElevatedButton(
-                    onPressed:() async {
-                  final newTime = await showTimePicker(
-                    context: context,
-                    initialTime: TimeOfDay.now(),
-                  );
-                  if (newTime != null) {
-                    setState(() {
-                      widget.controller.timeOfDay = newTime;
-                    });
-                  }
-                },
+                    onPressed: () async {
+                      final newTime = await showTimePicker(
+                        context: context,
+                        initialTime: TimeOfDay.now(),
+                      );
+                      if (newTime != null) {
+                        setState(() {
+                          widget.controller.timeOfDay = newTime;
+                        });
+                      }
+                    },
                     child: const Text('escolha as horas'),
                   )
                 ],
