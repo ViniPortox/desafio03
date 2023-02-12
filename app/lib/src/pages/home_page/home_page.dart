@@ -5,6 +5,8 @@ import 'package:app/src/pages/home_page/widgets/navigator_widget.dart';
 import 'package:app/src/pages/home_page/widgets/search_widget.dart';
 import 'package:flutter/material.dart';
 
+import '../../../theme/extensions/colors_theme.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -22,10 +24,12 @@ bool isOpen3 = true;
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    final colorsTheme = Theme.of(context).extension<ColorsTheme>()!;
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-      body: SizedBox(
+      body: Container(
+        color: colorsTheme.backgroundColor,
         height: size.height,
         child: Stack(
           children: [

@@ -1,6 +1,6 @@
-import 'package:app/src/controller/home_controller.dart';
+import 'package:app/src/controller/controller.dart';
 import 'package:app/src/pages/info_page/widgets/profile_container_info_widget.dart';
-import 'package:app/src/pages/info_page/widgets/task_widget.dart';
+import 'package:app/src/pages/info_page/widgets/new_task_widget.dart';
 import 'package:app/src/pages/info_page/widgets/todo_widget.dart';
 import 'package:flutter/material.dart';
 import '../../../theme/extensions/colors_theme.dart';
@@ -13,8 +13,7 @@ class InfoPage extends StatefulWidget {
 }
 
 class _InfoPageState extends State<InfoPage> {
-  
-  final controller = HomeController();
+  final controller = Controller();
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +26,7 @@ class _InfoPageState extends State<InfoPage> {
           showModalBottomSheet(
             context: context,
             builder: (context) {
-              return ShowEditTaskWidget(
+              return NewTaskWidget(
                 controller: controller,
               );
             },
@@ -53,9 +52,11 @@ class _InfoPageState extends State<InfoPage> {
                   itemBuilder: (BuildContext context, int index) {
                     final taskList = controller.taskMock.taskList[index];
                     return TodoWidget(
-                      isSelected: taskList.isDone,
                       title: taskList.title,
                       description: taskList.description,
+                      dateAndTime: taskList.dateAndTime,
+                      isSelected: taskList.isDone,
+                      
                     );
                   },
                 ),

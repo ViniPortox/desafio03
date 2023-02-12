@@ -1,5 +1,5 @@
 class NewTaskModel {
-  late final String title;
+  final String title;
   final String description;
   final bool isDone;
   final String? dateAndTime;

@@ -1,10 +1,10 @@
-import 'package:app/src/mock/task_mock.dart';
+import 'package:app/src/mocks/task_mock.dart';
 import 'package:app/src/models/task_model.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 import '../models/chat_filter_model.dart';
 
-class HomeController {
+class Controller {
   final taskMock = TaskMock();
 
   final formKey = GlobalKey<FormState>();
@@ -13,6 +13,11 @@ class HomeController {
   TimeOfDay timeOfDay = const TimeOfDay(hour: 25, minute: 59);
   DateTime dateTime = DateTime(2025);
 
+  DateTime? newDate;
+  TimeOfDay? newTime;
+
+  String horasss = '';
+
   String formatedDate() {
     return '${dateTime.day}/${dateTime.month}/${dateTime.year}';
   }
@@ -20,27 +25,6 @@ class HomeController {
   String formatedTime() {
     return '${timeOfDay.hour}:${timeOfDay.minute}';
   }
-
-  List<ChatFilterModel> chatFilter = [
-    ChatFilterModel(
-      chatIcons: ChatIcons.allIbox,
-      textTypeChat: 'All',
-      numberMessage: '35',
-      isSelected: true,
-    ),
-    ChatFilterModel(
-      chatIcons: ChatIcons.inbox,
-      textTypeChat: 'Live Chat',
-      numberMessage: '2',
-      isSelected: false,
-    ),
-    ChatFilterModel(
-      chatIcons: ChatIcons.bookmark,
-      textTypeChat: 'Live Chat',
-      numberMessage: '6',
-      isSelected: false,
-    ),
-  ];
 
   IconData getIcon(ChatFilterModel chatIcons) {
     switch (chatIcons.chatIcons) {
@@ -70,26 +54,21 @@ class HomeController {
       return true;
     }
   }
-
-  // void minutesFormated (TimeOfDay timeOfDay) {
-  //   if (timeOfDay.minute.toString().contains('0')){
-
-  //   }
-
-  // }
-
-
+  void overueTask () {
+    
+  }
+ 
   void saveTask() {
     print(taskMock.taskList.length);
     taskMock.taskList.add(
       TaskModel(
         title: titleTaskController.text,
         description: descriptionTaskController.text,
+        dateAndTime:
+            '${newDate!.day}/${newDate!.month}/${newDate!.year}\n${newTime!.hour}:${newTime!.minute}',
         isDone: false,
       ),
     );
     print(taskMock.taskList.length);
   }
-
-
 }

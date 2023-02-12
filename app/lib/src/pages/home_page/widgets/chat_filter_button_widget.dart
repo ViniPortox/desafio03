@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../theme/extensions/colors_theme.dart';
 import '../../../../theme/extensions/text_style_theme.dart';
-import '../../../controller/home_controller.dart';
+import '../../../controller/controller.dart';
 import '../../../models/chat_filter_model.dart';
 import 'badge_widget.dart';
 
@@ -23,10 +23,11 @@ class ChatFilterButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Controller();
     final size = MediaQuery.of(context).size;
     final colorsTheme = Theme.of(context).extension<ColorsTheme>()!;
     final textStyleTheme = Theme.of(context).extension<TextStyleTheme>()!;
-    final controller = HomeController();
+    
     return isSelected
         ? Padding(
             padding: EdgeInsets.only(right: size.width * 0.042),

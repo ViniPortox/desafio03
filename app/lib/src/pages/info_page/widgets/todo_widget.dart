@@ -4,17 +4,19 @@ import '../../../../theme/extensions/colors_theme.dart';
 import '../../../../theme/extensions/text_style_theme.dart';
 import '../../home_page/widgets/selected_button_widget.dart';
 
-
 class TodoWidget extends StatelessWidget {
   final String title;
   final String description;
   final bool isSelected;
   final void Function()? onPressed;
+  final String? dateAndTime;
+
   const TodoWidget({
     Key? key,
-    required this.isSelected,
     required this.title,
     required this.description,
+    required this.isSelected,
+    this.dateAndTime,
     this.onPressed,
   }) : super(key: key);
 
@@ -30,45 +32,68 @@ class TodoWidget extends StatelessWidget {
         width: size.width * 0.906,
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
-          color: isSelected
-              ? colorsTheme.blackColor
-              : colorsTheme.secundaryColor,
+          color:
+              isSelected ? colorsTheme.blackColor : colorsTheme.secundaryColor,
           borderRadius: BorderRadius.circular(18),
         ),
         child: Row(
           children: [
-            if (isSelected) SelectedButtonWidget(
-                    padding: size.width * 0.028,
-                    child: Icon(
-                      Icons.done,
-                      color: colorsTheme.blackColor,
-                      size: size.width * 0.064,
-                    ),
-                  ) else Container(
-                    height: size.width * 0.122,
-                    width: size.width * 0.122,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: colorsTheme.backgroundSelectedColor,
-                      ),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
+            if (isSelected)
+              SelectedButtonWidget(
+                padding: size.width * 0.028,
+                child: Icon(
+                  Icons.done,
+                  color: colorsTheme.blackColor,
+                  size: size.width * 0.064,
+                ),
+              )
+            else
+              Container(
+                height: size.width * 0.122,
+                width: size.width * 0.122,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: colorsTheme.backgroundSelectedColor,
                   ),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
             SizedBox(width: size.width * 0.021),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  title,
-                  style: textStyleTheme.todoTitleStyle,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SizedBox(
+                      width: size.width * 0.555,
+                      child: RichText(
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        text: TextSpan(
+                          text: title,
+                          style: textStyleTheme.todoTitleStyle,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-                Text(
-                  description,
-                  style:textStyleTheme.todoDescriptionStyle,
+                SizedBox(
+                  width: size.width * 0.555,
+                  child: RichText(
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    text: TextSpan(
+                      text: description,
+                      style: textStyleTheme.todoDescriptionStyle,
+                    ),
+                  ),
                 ),
               ],
-            )
+            ),
+            const SizedBox(width: 4),
+            Text(dateAndTime ?? ''),
           ],
         ),
       ),

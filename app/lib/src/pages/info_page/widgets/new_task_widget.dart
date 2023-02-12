@@ -1,19 +1,22 @@
-import 'package:app/src/controller/home_controller.dart';
+import 'package:app/src/controller/controller.dart';
 import 'package:flutter/material.dart';
 
-class ShowEditTaskWidget extends StatefulWidget {
-  final HomeController controller;
+class NewTaskWidget extends StatefulWidget {
+  final Controller controller;
 
-  const ShowEditTaskWidget({
+  const NewTaskWidget({
     Key? key,
     required this.controller,
   }) : super(key: key);
 
   @override
-  State<ShowEditTaskWidget> createState() => _ShowEditTaskWidgetState();
+  State<NewTaskWidget> createState() => _NewTaskWidgetState();
 }
 
-class _ShowEditTaskWidgetState extends State<ShowEditTaskWidget> {
+class _NewTaskWidgetState extends State<NewTaskWidget> {
+  final formKey = GlobalKey<FormState>();
+  TextEditingController titleTaskController = TextEditingController();
+  TextEditingController descriptionTaskController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -70,15 +73,16 @@ class _ShowEditTaskWidgetState extends State<ShowEditTaskWidget> {
                 children: [
                   ElevatedButton(
                     onPressed: () async {
-                      final newDate = await showDatePicker(
+                      widget.controller.newDate = await showDatePicker(
                         context: context,
                         initialDate: DateTime.now(),
                         firstDate: DateTime(2006),
                         lastDate: DateTime(2026),
                       );
-                      if (newDate != null) {
+                      if (widget.controller.newDate != null) {
                         setState(() {
-                          widget.controller.dateTime = newDate;
+                          widget.controller.dateTime =
+                              widget.controller.newDate!;
                         });
                       }
                     },
@@ -87,13 +91,14 @@ class _ShowEditTaskWidgetState extends State<ShowEditTaskWidget> {
                   const SizedBox(width: 20),
                   ElevatedButton(
                     onPressed: () async {
-                      final newTime = await showTimePicker(
+                      widget.controller.newTime = await showTimePicker(
                         context: context,
                         initialTime: TimeOfDay.now(),
                       );
-                      if (newTime != null) {
+                      if (widget.controller.newTime != null) {
                         setState(() {
-                          widget.controller.timeOfDay = newTime;
+                          widget.controller.timeOfDay =
+                              widget.controller.newTime!;
                         });
                       }
                     },
@@ -122,10 +127,18 @@ class _ShowEditTaskWidgetState extends State<ShowEditTaskWidget> {
               const SizedBox(height: 24),
               ElevatedButton(
                 onPressed: () {
-                  setState(() {
-                    widget.controller.saveTask();
+                  if (widget.controller.formKey.currentState!.validate()) {
+                    setState(() {
+                      widget.controller.saveTask();
+                    });
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Adicionando tarefa...'),
+                        duration: Duration(seconds: 2),
+                      ),
+                    );
                     Navigator.pop(context);
-                  });
+                  }
                 },
                 child: const Text('Salvar'),
               ),
