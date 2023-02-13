@@ -1,8 +1,9 @@
 import 'package:app/src/controller/controller.dart';
-import 'package:app/src/pages/info_page/widgets/profile_container_info_widget.dart';
 import 'package:app/src/pages/info_page/widgets/new_task_widget.dart';
+import 'package:app/src/pages/info_page/widgets/profile_container_info_widget.dart';
 import 'package:app/src/pages/info_page/widgets/todo_widget.dart';
 import 'package:flutter/material.dart';
+
 import '../../../theme/extensions/colors_theme.dart';
 
 class InfoPage extends StatefulWidget {
@@ -37,17 +38,22 @@ class _InfoPageState extends State<InfoPage> {
           size: size.width * 0.064,
         ),
       ),
-      body: SizedBox(
+      body: Container(
+        color: colorsTheme.backgroundColor,
         height: size.height,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const ProfileContainerInfoWidget(),
-              // SizedBox(height: size.width * 0.064),
-              SizedBox(
-                width: 450,
-                height: 400,
+        child: Column(
+          children: [
+            const ProfileContainerInfoWidget(),
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: size.width * 0.048,
+                ),
                 child: ListView.builder(
+                  padding: EdgeInsets.only(
+                    top: size.width * 0.064,
+                    bottom: size.width * 0.021,
+                  ),
                   itemCount: controller.taskMock.taskList.length,
                   itemBuilder: (BuildContext context, int index) {
                     final taskList = controller.taskMock.taskList[index];
@@ -55,14 +61,18 @@ class _InfoPageState extends State<InfoPage> {
                       title: taskList.title,
                       description: taskList.description,
                       dateAndTime: taskList.dateAndTime,
-                      isSelected: taskList.isDone,
-                      
+                      isDone: taskList.isDone,
+                      onTap: () {
+                        setState(() {
+                          taskList.isDone = !taskList.isDone;
+                        });
+                      },
                     );
                   },
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

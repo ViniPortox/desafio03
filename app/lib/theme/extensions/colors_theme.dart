@@ -5,6 +5,7 @@ class ColorsTheme extends ThemeExtension<ColorsTheme> {
   final Color primaryColor;
   final Color secundaryColor;
   final Color terciaryColor;
+  final Color textBadgeSelectedColor;
   final Color backgroundInfoColor;
   final Color backgroundSelectedColor;
   final Color blackColor;
@@ -23,6 +24,7 @@ class ColorsTheme extends ThemeExtension<ColorsTheme> {
     required this.primaryColor,
     required this.secundaryColor,
     required this.terciaryColor,
+    required this.textBadgeSelectedColor,
     required this.backgroundInfoColor,
     required this.backgroundSelectedColor,
     required this.blackColor,

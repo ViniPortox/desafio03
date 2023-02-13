@@ -3,12 +3,12 @@ import 'extensions/colors_theme.dart';
 import 'extensions/text_style_theme.dart';
 
 ThemeData getDarkTheme() {
-  // background mudar
   final colorsTheme = ColorsTheme(
     backgroundColor: const Color(0xff20232B),
     primaryColor: const Color(0xff7D8186),
-    secundaryColor: const Color(0xff20232B),
+    secundaryColor: const Color(0xff16171B),
     terciaryColor: const Color(0xffB785F5),
+    textBadgeSelectedColor: const Color(0xffCDCBFF),
     backgroundInfoColor: const Color(0xff5852D6),
     backgroundSelectedColor: const Color(0xffF3FC8A),
     badgeSelectedColor: const Color(0xff524CC5),
@@ -30,33 +30,30 @@ ThemeData getDarkTheme() {
     ],
   );
   return ThemeData(
-    //Brightness
     brightness: Brightness.dark,
-    //Appbar
+
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.black,
       actionsIconTheme: IconThemeData(
         color: Colors.white,
       ),
     ),
-    //font Family
-    fontFamily: 'Roboto',
-    extensions: <ThemeExtension<dynamic>>[
-      //Extension Colors
 
-      /////// FAZER DESSA FORMA ABAIXOOOOOOOOOOOOO ///////// AAAAAAAAAAAAAAA
+    fontFamily: 'Roboto',
+
+    extensions: <ThemeExtension<dynamic>>[
       colorsTheme,
       TextStyleTheme(
         badgeWidgetStyle: TextStyle(
           fontSize: 16,
-          color: colorsTheme.primaryColor,
+          color: colorsTheme.textBadgeSelectedColor,
         ),
         chatFilterButtonSelectedStyle: TextStyle(
-          fontSize: 18,
+          fontSize: 20,
           color: colorsTheme.blackColor,
         ),
         chatFilterButtonStyle: TextStyle(
-          fontSize: 18,
+          fontSize: 20,
           color: colorsTheme.primaryColor,
         ),
         listTileNumberStyle: TextStyle(
@@ -94,17 +91,20 @@ ThemeData getDarkTheme() {
           color: colorsTheme.profileSkilltextColor,
         ),
         profileSkillStyle: TextStyle(
-            color: colorsTheme.profileSkilltextColor,
-            fontSize: 18,
-          ),
-          todoTitleStyle: const TextStyle(
-                    fontSize: 20,
-                  ),
-                  todoDescriptionStyle:  TextStyle(
-                    fontSize: 18,
-                    color: colorsTheme.primaryColor,
-                  ),
-
+          color: colorsTheme.profileSkilltextColor,
+          fontSize: 18,
+        ),
+        todoTitleStyle: const TextStyle(
+          fontSize: 20,
+        ),
+        todoDescriptionStyle: TextStyle(
+          fontSize: 18,
+          color: colorsTheme.primaryColor,
+        ),
+        expansionTitleStyle: TextStyle(
+          fontSize: 18,
+          color: colorsTheme.primaryColor,
+        ),
       )
     ],
     //Text

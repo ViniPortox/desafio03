@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../theme/extensions/text_style_theme.dart';
 
-
 class ProfileSkillsWidget extends StatelessWidget {
   final Color colors;
   final String text;

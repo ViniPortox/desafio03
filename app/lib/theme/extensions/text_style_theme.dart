@@ -8,9 +8,7 @@ class TextStyleTheme extends ThemeExtension<TextStyleTheme> {
   final TextStyle listTileMessageStyle;
   final TextStyle listTilehourStyle;
   final TextStyle nameSmallStyle;
-
   final TextStyle nameMediumStyle;
-
   final TextStyle nameBigStyle;
   final TextStyle searchStyle;
   final TextStyle profileContainerInfoNumberStyle;
@@ -18,6 +16,8 @@ class TextStyleTheme extends ThemeExtension<TextStyleTheme> {
   final TextStyle profileSkillStyle;
   final TextStyle todoTitleStyle;
   final TextStyle todoDescriptionStyle;
+  final TextStyle expansionTitleStyle;
+ 
 
   TextStyleTheme({
     required this.badgeWidgetStyle,
@@ -35,6 +35,9 @@ class TextStyleTheme extends ThemeExtension<TextStyleTheme> {
     required this.profileSkillStyle,
     required this.todoTitleStyle,
     required this.todoDescriptionStyle,
+    required this.expansionTitleStyle,
+   
+
   });
 
   @override

@@ -17,7 +17,7 @@ class ProfileContainerInfoWidget extends StatelessWidget {
     final textStyleTheme = Theme.of(context).extension<TextStyleTheme>()!;
     return Container(
       height: size.width * 1.162,
-      width: size.width * 1,
+      width: size.width,
       decoration: BoxDecoration(
         color: colorsTheme.backgroundInfoColor,
         borderRadius: const BorderRadius.only(
@@ -50,7 +50,7 @@ class ProfileContainerInfoWidget extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: size.width * 0.026),
+          SizedBox(height: size.width * 0.01),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -61,12 +61,12 @@ class ProfileContainerInfoWidget extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: size.width * 0.021),
+          SizedBox(height: size.width * 0.01),
           Text(
             '86 9 9489-4600',
             style: textStyleTheme.profileContainerInfoNumberStyle,
           ),
-          const SizedBox(height: 18),
+          SizedBox(height: size.width * 0.037),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: size.width * 0.112),
             child: Row(
@@ -74,24 +74,54 @@ class ProfileContainerInfoWidget extends StatelessWidget {
               children: const [
                 ProfileButtonWidget(icon: Icons.phone_in_talk, avaliable: true),
                 ProfileButtonWidget(
-                    icon: Icons.videocam_outlined, avaliable: true,),
+                  icon: Icons.videocam_outlined,
+                  avaliable: true,
+                ),
                 ProfileButtonWidget(
-                    icon: Icons.volume_off_sharp, avaliable: true,),
+                  icon: Icons.volume_off_sharp,
+                  avaliable: true,
+                ),
                 ProfileButtonWidget(icon: Icons.mail, avaliable: false)
               ],
             ),
           ),
-          SizedBox(height: size.width * 0.037),
+          SizedBox(height: size.width * 0.026),
           Text(
             'Nego ney! 😝',
             style: textStyleTheme.profileContainerInfoDescriptionStyle,
           ),
-          SizedBox(height: size.width * 0.021),
           Text(
             'nego nego nego ney.',
             style: textStyleTheme.profileContainerInfoDescriptionStyle,
           ),
-          const SizedBox(height: 12),
+          SizedBox(height: size.width * 0.032),
+          // Wrap(
+          //   children: [
+          //     ProfileSkillsWidget(
+          //       colors: colorsTheme.skillColor[0],
+          //       text: 'UI/UX Designer',
+          //     ),
+          //     SizedBox(width: size.width * 0.021),
+          //     ProfileSkillsWidget(
+          //       colors: colorsTheme.skillColor[1],
+          //       text: 'Project Manager',
+          //     ),
+          //     ProfileSkillsWidget(
+          //       colors: colorsTheme.skillColor[2],
+          //       text: 'QA',
+          //     ),
+          //     const SizedBox(width: 6),
+          //     ProfileSkillsWidget(
+          //       colors: colorsTheme.skillColor[3],
+          //       text: 'SEO',
+          //     ),
+          //     const SizedBox(width: 6),
+          //     ProfileSkillsWidget(
+          //       colors: colorsTheme.skillColor[4],
+          //       text: 'Java Script Developer',
+          //     ),
+          //   ],
+          // ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -101,7 +131,9 @@ class ProfileContainerInfoWidget extends StatelessWidget {
               ),
               SizedBox(width: size.width * 0.021),
               ProfileSkillsWidget(
-                  colors: colorsTheme.skillColor[1], text: 'Project Manager',),
+                colors: colorsTheme.skillColor[1],
+                text: 'Project Manager',
+              ),
             ],
           ),
           SizedBox(height: size.width * 0.021),
@@ -109,14 +141,19 @@ class ProfileContainerInfoWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ProfileSkillsWidget(
-                  colors: colorsTheme.skillColor[2], text: 'QA',),
+                colors: colorsTheme.skillColor[2],
+                text: 'QA',
+              ),
               const SizedBox(width: 6),
               ProfileSkillsWidget(
-                  colors: colorsTheme.skillColor[3], text: 'SEO',),
+                colors: colorsTheme.skillColor[3],
+                text: 'SEO',
+              ),
               const SizedBox(width: 6),
               ProfileSkillsWidget(
-                  colors: colorsTheme.skillColor[4],
-                  text: 'Java Script Developer',),
+                colors: colorsTheme.skillColor[4],
+                text: 'Java Script Developer',
+              ),
             ],
           ),
         ],

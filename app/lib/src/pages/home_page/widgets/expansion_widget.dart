@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../../../theme/extensions/colors_theme.dart';
+import '../../../../theme/extensions/text_style_theme.dart';
+
 class ExpansionWidget extends StatefulWidget {
   final String title;
   final double height;
@@ -22,6 +25,9 @@ class ExpansionWidget extends StatefulWidget {
 class _ExpansionWidgetState extends State<ExpansionWidget> {
   @override
   Widget build(BuildContext context) {
+    final textStyleTheme = Theme.of(context).extension<TextStyleTheme>()!;
+    final colorsTheme = Theme.of(context).extension<ColorsTheme>()!;
+
     final size = MediaQuery.of(context).size;
     return ClipRect(
       child: Padding(
@@ -33,23 +39,20 @@ class _ExpansionWidgetState extends State<ExpansionWidget> {
             InkWell(
               onTap: widget.onTap,
               child: SizedBox(
-                height: 30,
+                height: size.width * 0.08,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       widget.title,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        color: Colors.grey,
-                      ),
+                      style: textStyleTheme.expansionTitleStyle,
                     ),
                     Icon(
                       widget.isOpen
                           ? Icons.keyboard_arrow_up_rounded
                           : Icons.keyboard_arrow_down_rounded,
-                      size: 24,
-                      color: Colors.grey,
+                      size: size.width * 0.064,
+                      color: colorsTheme.primaryColor,
                     )
                   ],
                 ),

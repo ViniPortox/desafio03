@@ -4,18 +4,22 @@ import 'package:app/src/pages/chat_page/widgets/send_message_widget.dart';
 import 'package:app/src/pages/chat_page/widgets/user_messenger_widget.dart';
 import 'package:flutter/material.dart';
 
+import '../../../theme/extensions/colors_theme.dart';
+
 class ChatPage extends StatelessWidget {
   const ChatPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final colorsTheme = Theme.of(context).extension<ColorsTheme>()!;
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBarWidget(size: size.width * 0.266),
       body: Stack(
         alignment: Alignment.bottomCenter,
         children: [
-          SizedBox(
+          Container(
+            color: colorsTheme.backgroundColor,
             height: size.height,
             child: SingleChildScrollView(
               child: Padding(
@@ -40,7 +44,8 @@ class ChatPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         const UserMesseger(
-                            mainAxisAlignment: MainAxisAlignment.end,),
+                          mainAxisAlignment: MainAxisAlignment.end,
+                        ),
                         SizedBox(height: size.width * 0.021),
                         const MessageWidget(
                           myMessage: true,
@@ -65,7 +70,8 @@ class ChatPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         const UserMesseger(
-                            mainAxisAlignment: MainAxisAlignment.end,),
+                          mainAxisAlignment: MainAxisAlignment.end,
+                        ),
                         SizedBox(height: size.width * 0.021),
                         const MessageWidget(
                           myMessage: true,
@@ -79,7 +85,9 @@ class ChatPage extends StatelessWidget {
             ),
           ),
           Positioned(
-              bottom: size.width * 0.05, child: const SendMessageWidget(),),
+            bottom: size.width * 0.05,
+            child: const SendMessageWidget(),
+          ),
         ],
       ),
     );

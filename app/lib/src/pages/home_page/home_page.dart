@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
                       padding: EdgeInsets.only(left: size.width * 0.042),
                       child: const ChatFilterListWidget(),
                     ),
-                    SizedBox(height: size.width * 0.053),
+                    SizedBox(height: size.width * 0.042),
                     ExpansionWidget(
                       title: 'Unread',
                       height: altura,
@@ -78,14 +78,14 @@ class _HomePageState extends State<HomePage> {
                     SizedBox(height: size.width * 0.064),
                     ExpansionWidget(
                       title: 'From companies',
-                      height: altura2,
+                      height: altura3,
                       isOpen: isOpen3,
                       onTap: () {
                         setState(() {
                           isOpen3 = !isOpen3;
                           isOpen3 == true
-                              ? altura2 = size.width * 0.693
-                              : altura2 = 0;
+                              ? altura3 = size.width * 0.693
+                              : altura3 = 0;
                         });
                       },
                       child: const ListTileWidget(muted: false),
