@@ -1,5 +1,6 @@
 import 'package:app/src/pages/info_page/widgets/profile_button_widget.dart';
 import 'package:app/src/pages/info_page/widgets/profile_skills_widget.dart';
+import 'package:app/utils/image_path.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../theme/extensions/colors_theme.dart';
@@ -41,7 +42,7 @@ class ProfileContainerInfoWidget extends StatelessWidget {
                 AvatarWidet(
                   radius: size.width * 0.109,
                   imageNetwork:
-                      'https://feijoadasimulator.top/br/sources/4166.jpeg',
+                    ImagePath.profileAvatar ,
                 ),
                 Icon(
                   Icons.more_horiz,

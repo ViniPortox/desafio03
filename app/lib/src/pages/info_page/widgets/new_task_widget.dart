@@ -15,6 +15,7 @@ class NewTaskWidget extends StatefulWidget {
 
 class _NewTaskWidgetState extends State<NewTaskWidget> {
   final formKey = GlobalKey<FormState>();
+  // ValueNotifier oi = ValueNotifier(_value)
   TextEditingController titleTaskController = TextEditingController();
   TextEditingController descriptionTaskController = TextEditingController();
   @override
@@ -128,9 +129,7 @@ class _NewTaskWidgetState extends State<NewTaskWidget> {
               ElevatedButton(
                 onPressed: () {
                   if (widget.controller.formKey.currentState!.validate()) {
-                    setState(() {
-                      widget.controller.saveTask();
-                    });
+                  widget.controller.addTask();
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
                         content: Text('Adicionando tarefa...'),

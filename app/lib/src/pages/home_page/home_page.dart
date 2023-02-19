@@ -1,11 +1,11 @@
-import 'package:app/src/pages/home_page/widgets/chat_filter_list_widget.dart';
+import 'package:app/src/pages/home_page/widgets/chat_filter_button_widget.dart';
 import 'package:app/src/pages/home_page/widgets/expansion_widget.dart';
 import 'package:app/src/pages/home_page/widgets/list_tile_widget.dart';
 import 'package:app/src/pages/home_page/widgets/navigator_widget.dart';
 import 'package:app/src/pages/home_page/widgets/search_widget.dart';
 import 'package:flutter/material.dart';
-
 import '../../../theme/extensions/colors_theme.dart';
+import '../../controller/controller.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,14 +14,10 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-double altura = 350;
-double altura2 = 350;
-double altura3 = 350;
-bool isOpen = true;
-bool isOpen2 = false;
-bool isOpen3 = true;
 
 class _HomePageState extends State<HomePage> {
+  final controller = Controller();
+
   @override
   Widget build(BuildContext context) {
     final colorsTheme = Theme.of(context).extension<ColorsTheme>()!;
@@ -41,21 +37,35 @@ class _HomePageState extends State<HomePage> {
                     SizedBox(height: size.width * 0.128),
                     const SearchWidget(),
                     SizedBox(height: size.width * 0.037),
-                    Padding(
-                      padding: EdgeInsets.only(left: size.width * 0.042),
-                      child: const ChatFilterListWidget(),
+                    SizedBox(
+                      height: size.width * 0.133,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        padding: EdgeInsets.only(left: size.width * 0.042),
+                        itemCount: controller.chatFilterMock.chatFilter.length,
+                        itemBuilder: (context, index) {
+                          final filterList =
+                              controller.chatFilterMock.chatFilter[index];
+                          return ChatFilterButtonWidget(
+                            filterIcon: filterList,
+                            filterTypeTextChat: filterList.textTypeChat,
+                            isSelected: filterList.isSelected,
+                            numberMessage: filterList.numberMessage,
+                          );
+                        },
+                      ),
                     ),
                     SizedBox(height: size.width * 0.042),
                     ExpansionWidget(
                       title: 'Unread',
-                      height: altura,
-                      isOpen: isOpen,
+                      height: controller.altura[0],
+                      isOpen: controller.isOpen[0],
                       onTap: () {
                         setState(() {
-                          isOpen = !isOpen;
-                          isOpen == true
-                              ? altura = size.width * 0.693
-                              : altura = 0;
+                          controller.isOpen[0] = !controller.isOpen[0];
+                          controller.isOpen[0] == true
+                              ? controller.altura[0] = size.width * 0.693
+                              : controller.altura[0] = 0;
                         });
                       },
                       child: const ListTileWidget(muted: false),
@@ -63,14 +73,14 @@ class _HomePageState extends State<HomePage> {
                     SizedBox(height: size.width * 0.064),
                     ExpansionWidget(
                       title: 'From team',
-                      height: altura2,
-                      isOpen: isOpen2,
+                      height: controller.altura[1],
+                      isOpen: controller.isOpen[1],
                       onTap: () {
                         setState(() {
-                          isOpen2 = !isOpen2;
-                          isOpen2 == true
-                              ? altura2 = size.width * 0.693
-                              : altura2 = 0;
+                          controller.isOpen[1] = !controller.isOpen[1];
+                          controller.isOpen[1] == true
+                              ? controller.altura[1] = size.width * 0.693
+                              : controller.altura[1] = 0;
                         });
                       },
                       child: const ListTileWidget(muted: false),
@@ -78,19 +88,19 @@ class _HomePageState extends State<HomePage> {
                     SizedBox(height: size.width * 0.064),
                     ExpansionWidget(
                       title: 'From companies',
-                      height: altura3,
-                      isOpen: isOpen3,
+                      height: controller.altura[2],
+                      isOpen: controller.isOpen[2],
                       onTap: () {
                         setState(() {
-                          isOpen3 = !isOpen3;
-                          isOpen3 == true
-                              ? altura3 = size.width * 0.693
-                              : altura3 = 0;
+                          controller.isOpen[2] = !controller.isOpen[2];
+                          controller.isOpen[2] == true
+                              ? controller.altura[2] = size.width * 0.693
+                              : controller.altura[2] = 0;
                         });
                       },
                       child: const ListTileWidget(muted: false),
                     ),
-                    SizedBox(height: size.width * 0.064),
+                    SizedBox(height: size.width * 0.33)
                   ],
                 ),
               ),

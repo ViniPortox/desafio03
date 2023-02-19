@@ -1,32 +1,33 @@
+import 'package:app/utils/hex_colors.dart';
 import 'package:flutter/material.dart';
 import 'extensions/colors_theme.dart';
 import 'extensions/text_style_theme.dart';
 
 ThemeData getDarkTheme() {
   final colorsTheme = ColorsTheme(
-    backgroundColor: const Color(0xff20232B),
-    primaryColor: const Color(0xff7D8186),
-    secundaryColor: const Color(0xff16171B),
-    terciaryColor: const Color(0xffB785F5),
-    textBadgeSelectedColor: const Color(0xffCDCBFF),
-    backgroundInfoColor: const Color(0xff5852D6),
-    backgroundSelectedColor: const Color(0xffF3FC8A),
-    badgeSelectedColor: const Color(0xff524CC5),
-    badgeUnselectedColor: const Color(0xff393D45),
-    iconsWhiteColor: Colors.white,
-    iconsColor: const Color(0xff919397),
-    profileSkilltextColor: const Color(0xffB6B4FF),
-    onlineColor: const Color(0xffA3D731),
-    profileIconsAvaliableColor: const Color(0xff6963DB),
-    profileIconsUnvaliableColor: const Color(0xff5E59D8),
-    blackColor: Colors.black,
-    titleColor: Colors.white,
+    backgroundColor: HexColors.darkGrey,
+    primaryColor: HexColors.primaryGrey,
+    secundaryColor: HexColors.secundaryDarkGrey,
+    terciaryColor: HexColors.rosyPurple,
+    textBadgeSelectedColor: HexColors.lightPink,
+    backgroundInfoColor: HexColors.purple,
+    backgroundSelectedColor: HexColors.amber,
+    badgeSelectedColor: HexColors.selectedPurple,
+    badgeUnselectedColor: HexColors.unselectedDarkGrey,
+    iconsWhiteColor: HexColors.white,
+    iconsColor: HexColors.grey,
+    profileSkilltextColor: HexColors.pink,
+    onlineColor: HexColors.greenLemon,
+    profileIconsAvaliableColor: HexColors.profileAvaliablePurple,
+    profileIconsUnvaliableColor: HexColors.profileUnvaliablePurple,
+    blackColor: HexColors.black,
+    titleColor: HexColors.white,
     skillColor: const [
-      Color(0xff6963DB),
-      Color(0xff454084),
-      Color(0xffA5A89A),
-      Color(0xff8AA2AA),
-      Color(0xff8568A9),
+      HexColors.skillsRandomColors1,
+      HexColors.skillsRandomColors2,
+      HexColors.skillsRandomColors3,
+      HexColors.skillsRandomColors4,
+      HexColors.skillsRandomColors5,
     ],
   );
   return ThemeData(

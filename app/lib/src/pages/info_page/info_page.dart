@@ -4,6 +4,7 @@ import 'package:app/src/pages/info_page/widgets/profile_container_info_widget.da
 import 'package:app/src/pages/info_page/widgets/todo_widget.dart';
 import 'package:flutter/material.dart';
 
+import '../../../service/prefs_service.dart';
 import '../../../theme/extensions/colors_theme.dart';
 
 class InfoPage extends StatefulWidget {
@@ -14,8 +15,20 @@ class InfoPage extends StatefulWidget {
 }
 
 class _InfoPageState extends State<InfoPage> {
-  final controller = Controller();
+  @override
+  void initState() {
+    super.initState();
+    controller.prefsService.loadTask();
+    controller.addListener(() {
+      setState(() {});
+    });
+    prefsService.addListener(() {
+      setState(() {});
+    });
+  }
 
+  final prefsService = PrefsService();
+  final controller = Controller();
   @override
   Widget build(BuildContext context) {
     final colorsTheme = Theme.of(context).extension<ColorsTheme>()!;

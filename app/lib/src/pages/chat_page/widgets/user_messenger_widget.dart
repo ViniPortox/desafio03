@@ -1,3 +1,4 @@
+import 'package:app/utils/image_path.dart';
 import 'package:flutter/material.dart';
 import '../../../../theme/extensions/colors_theme.dart';
 import '../../home_page/widgets/name_widget.dart';
@@ -20,7 +21,7 @@ class UserMesseger extends StatelessWidget {
       children: [
         const CircleAvatar(
           backgroundImage: NetworkImage(
-              'https://m.extra.globo.com/incoming/23560180-ee0-fc1/w480h720-PROP/81865188_re-rio-de-janeiro-rj-27-03-2019-nego-ney-o-menino-de-7-anos-que-tem-viralizado-por-seu.jpg',),
+              ImagePath.imageAvatar,),
         ),
         SizedBox(width: size.width * 0.021),
         const NameWidget(name: 'Nego Ney', isOnline: false),

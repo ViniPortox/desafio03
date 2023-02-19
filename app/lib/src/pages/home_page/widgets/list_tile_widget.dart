@@ -1,4 +1,5 @@
-import 'package:app/routes/routes.dart';
+import 'package:app/utils/image_path.dart';
+import 'package:app/utils/routes.dart';
 import 'package:flutter/material.dart';
 import '../../../../theme/extensions/colors_theme.dart';
 import '../../../../theme/extensions/text_style_theme.dart';
@@ -31,7 +32,7 @@ class ListTileWidget extends StatelessWidget {
                 const AvatarWidet(
                   badge: BadgeWidget(numberMessage: '35', isSelected: true),
                   imageNetwork:
-                      'https://m.extra.globo.com/incoming/23560180-ee0-fc1/w480h720-PROP/81865188_re-rio-de-janeiro-rj-27-03-2019-nego-ney-o-menino-de-7-anos-que-tem-viralizado-por-seu.jpg',
+                    ImagePath.imageAvatar  ,
                 ),
                 SizedBox(width: size.width * 0.032),
                 Column(
