@@ -2,6 +2,10 @@ import 'package:app/src/controller/controller.dart';
 import 'package:app/src/pages/info_page/widgets/new_task_widget.dart';
 import 'package:app/src/pages/info_page/widgets/profile_container_info_widget.dart';
 import 'package:app/src/pages/info_page/widgets/todo_widget.dart';
+import 'package:app/states/task_error_state.dart';
+import 'package:app/states/task_loading_state.dart';
+import 'package:app/states/task_sucess_state.dart';
+import 'package:app/stores/task_story.dart';
 import 'package:flutter/material.dart';
 
 import '../../../service/prefs_service.dart';
@@ -18,16 +22,13 @@ class _InfoPageState extends State<InfoPage> {
   @override
   void initState() {
     super.initState();
-    controller.prefsService.loadTask();
+    store.prefsLoad();
     controller.addListener(() {
-      setState(() {});
-    });
-    prefsService.addListener(() {
       setState(() {});
     });
   }
 
-  final prefsService = PrefsService();
+  final store = TaskStore(PrefsService());
   final controller = Controller();
   @override
   Widget build(BuildContext context) {
@@ -62,25 +63,43 @@ class _InfoPageState extends State<InfoPage> {
                 padding: EdgeInsets.symmetric(
                   horizontal: size.width * 0.048,
                 ),
-                child: ListView.builder(
-                  padding: EdgeInsets.only(
-                    top: size.width * 0.064,
-                    bottom: size.width * 0.021,
-                  ),
-                  itemCount: controller.taskMock.taskList.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    final taskList = controller.taskMock.taskList[index];
-                    return TodoWidget(
-                      title: taskList.title,
-                      description: taskList.description,
-                      dateAndTime: taskList.dateAndTime,
-                      isDone: taskList.isDone,
-                      onTap: () {
-                        setState(() {
-                          taskList.isDone = !taskList.isDone;
-                        });
-                      },
-                    );
+                child: ValueListenableBuilder(
+                  valueListenable: store,
+                  builder: (_, state, __) {
+                    if (state is TaskLoadingState) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                    if (state is TaskErrorState) {
+                      return Center(
+                        child: Text(state.message),
+                      );
+                    }
+                    if (state is TaskSucessState) {
+                      return ListView.builder(
+                        padding: EdgeInsets.only(
+                          top: size.width * 0.064,
+                          bottom: size.width * 0.021,
+                        ),
+                        itemCount: state.tasks.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          final taskList = state.tasks[index];
+                          return TodoWidget(
+                            title: taskList.title,
+                            description: taskList.description,
+                            dateAndTime: taskList.dateAndTime,
+                            isDone: taskList.isDone,
+                            onTap: () {
+                              setState(() {
+                                taskList.isDone = !taskList.isDone;
+                              });
+                            },
+                          );
+                        },
+                      );
+                    }
+                    return Container();
                   },
                 ),
               ),

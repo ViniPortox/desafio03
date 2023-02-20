@@ -85,7 +85,8 @@ class Controller extends ChangeNotifier {
   //   return dateAndTime;
   // }
 
-  void addTask() {
+  Future<void> addTask() async {
+    // final tasksLoaded = prefsService.loadTask();
     taskMock.taskList.add(
       TaskModel(
         title: titleTaskController.text,
@@ -96,8 +97,8 @@ class Controller extends ChangeNotifier {
     );
     print(taskMock.taskList.length);
 
-    var newList = taskMock.taskList;
-    var stringNewList = jsonEncode(newList);
+    final newList = taskMock.taskList;
+    final stringNewList = jsonEncode(newList);
     prefsService.saveTask(stringNewList);
     notifyListeners();
   }
